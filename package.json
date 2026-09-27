@@ -1,0 +1,19 @@
+{
+  "name": "pinterest-downloader",
+  "version": "1.0.0",
+  "description": "Pinterest video downloader with Express and EJS",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "axios": "^1.7.2",
+    "cheerio": "^1.0.0",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
