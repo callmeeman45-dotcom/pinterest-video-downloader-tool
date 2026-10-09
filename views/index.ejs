@@ -3,49 +3,60 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pinterest Video Downloader Free - Download Pinterest Videos Online</title>
-  <meta name="description" content="Pinterest video downloader free tool to save any Pinterest video in seconds. No signup, no watermark, no software needed — just paste your link and download." />
+  <title>Pinterest Video Downloader Free - Save Pinterest Videos Online</title>
+  <meta name="description" content="Pinterest video downloader free: paste a pin link and save the video as MP4. No signup, no app to install. Works on phone and computer." />
+  <link rel="canonical" href="https://pinterest-video-downloader-tool.vercel.app/" />
   <meta name="google-site-verification" content="2oQ9nHqPWtFJt3BqpX0GzOX7KgKg7tO3nj1x7kJOhbs" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Pinterest Video Downloader Free" />
+  <meta property="og:description" content="Paste a Pinterest pin link and save the video as MP4. Free, no signup." />
+  <meta property="og:url" content="https://pinterest-video-downloader-tool.vercel.app/" />
+
   <link rel="stylesheet" href="/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
   <header class="site-header">
     <nav class="navbar">
-      <a href="/" class="nav-brand">Pinterest Video Downloader Free</a>
+      <a href="/" class="nav-brand">Pinterest Video Downloader</a>
       <ul class="nav-links">
-        <li><a href="#how-it-works">How It Works</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#purpose">Purpose</a></li>
+        <li><a href="#why">Why Use It</a></li>
+        <li><a href="#format">What You Get</a></li>
+        <li><a href="/how-to-download-pinterest-videos">Guide</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
 
-    <!-- Hero / Tool Section -->
+    <!-- Hero / Tool -->
     <section class="hero" id="home">
       <div class="container">
         <h1>Pinterest Video Downloader Free</h1>
         <p class="subtitle">
-          The easiest pinterest video downloader free tool — paste any Pinterest video link
-          below and download it instantly, in full quality, with no watermark.
+          Use this pinterest video downloader free tool to save any Pinterest video.
+          Paste the link, tap Get Video, and download it to your phone or computer.
         </p>
 
         <form action="/extract" method="POST" class="form">
-  <div class="input-wrapper">
-    <input
-      type="text"
-      id="pinUrlInput"
-      name="pinUrl"
-      placeholder="https://www.pinterest.com/pin/... or https://pin.it/..."
-      value="<%= submittedUrl %>"
-      required
-    />
-    <button type="button" class="clear-btn" onclick="clearInput()" title="Clear">&times;</button>
-  </div>
-  <button type="submit">Get Video</button>
-</form>
+          <div class="input-wrapper">
+            <input
+              type="text"
+              id="pinUrlInput"
+              name="pinUrl"
+              placeholder="https://www.pinterest.com/pin/... or https://pin.it/..."
+              value="<%= submittedUrl %>"
+              required
+            />
+            <button type="button" class="clear-btn" onclick="clearInput()" title="Clear" aria-label="Clear">&times;</button>
+          </div>
+          <button type="submit">Get Video</button>
+        </form>
 
         <% if (error) { %>
           <p class="error"><%= error %></p>
@@ -62,7 +73,8 @@
 
             <button
               class="download-btn"
-              onclick="downloadVideo('<%= encodeURIComponent(result.videoUrl) %>')"
+              data-url="<%= encodeURIComponent(result.videoUrl) %>"
+              onclick="downloadVideo(this.dataset.url)"
             >
               Download Video
             </button>
@@ -72,142 +84,102 @@
       </div>
     </section>
 
-    <!-- About Section -->
-    <section class="info-section" id="about">
-      <div class="container">
-        <h2>What Is This Pinterest Video Downloader Free Tool?</h2>
-        <p>
-          This pinterest video downloader free website lets anyone save Pinterest videos
-          directly to their device in just a few seconds. Whether you're collecting
-          inspiration, saving a recipe video, or archiving content for later, our tool makes
-          the process completely free and hassle-free — no account required, no browser
-          extension to install, and no hidden charges.
-        </p>
-      </div>
+    <section id="purpose">
+      <h2>Why use a Pinterest video downloader free tool?</h2>
+      <p>Pinterest has many useful videos, like recipes, DIY ideas and tutorials. But it has no button to download them. You can save a pin to a board, but the video only plays inside Pinterest. If the pin is deleted or you have no internet, you lose it.</p>
+      <p>This tool fixes that. Copy the link of a video pin, paste it in the box above, and get the video as a file. You can keep it, watch it offline, or send it to another device.</p>
+
+      <figure class="step-image">
+        <img
+          src="https://res.cloudinary.com/dc3lavmde/image/upload/v1791392335/inweb_gre33i.webp"
+          alt="Pinterest video downloader free guide: Pinterest has no download button for videos"
+          width="720"
+          height="450"
+          loading="lazy"
+        />
+        <figcaption>On Pinterest, there is no option to download the video. This tool solves that.</figcaption>
+      </figure>
     </section>
 
-    <!-- Purpose Section -->
-    <section class="info-section alt" id="purpose">
-      <div class="container">
-        <h2>Why Use a Pinterest Video Downloader Free Service?</h2>
-        <p>
-          Pinterest doesn't give you a built-in way to save videos to your phone or computer —
-          videos only play inside the app or website. That's exactly the gap this pinterest
-          video downloader free tool fills. Just copy the link of any Pinterest video pin,
-          paste it here, and get a direct download link in the original video quality, ready
-          to save anywhere you like.
-        </p>
-      </div>
+    <section id="devices">
+      <h2>Works on any device</h2>
+      <p>You use it in your browser, so there is nothing to install. It works on Android, iPhone, iPad, Windows, Mac and Linux.</p>
+      <p>On a phone, the video usually goes to your Downloads folder or the Files app. On a computer, it goes to your browser's download folder. Chrome, Safari, Firefox and Edge all work.</p>
     </section>
 
-    <!-- How To Use Section -->
-    <section class="info-section" id="how-it-works">
-      <div class="container">
-        <h2>How to Use This Pinterest Video Downloader Free Tool</h2>
-        <ol class="steps">
-          <li>Open Pinterest and find the video pin you want to download.</li>
-          <li>Tap the share icon and copy the pin's link.</li>
-          <li>Paste that link into the box above on this pinterest video downloader free tool.</li>
-          <li>Click "Get Video," then hit "Download Video" to save it to your device.</li>
-        </ol>
-      </div>
+    <section id="links">
+      <h2>Which links can I use?</h2>
+      <p>You can paste the full link from your browser, or the short pin.it link from the Share button in the Pinterest app. Short links work automatically.</p>
+      <p>The link must be for a pin that has a video. Links to image pins, boards or profiles will not work.</p>
     </section>
 
-    <!-- What It Does Section -->
-    <section class="info-section alt" id="what-it-does">
-      <div class="container">
-        <h2>What This Pinterest Video Downloader Free Tool Does</h2>
-        <ul class="features">
-          <li>Extracts the original video file directly from any Pinterest video pin link.</li>
-          <li>Works with both full Pinterest links and shortened pin.it links.</li>
-          <li>Delivers a clean download with no watermark added.</li>
-          <li>Completely free to use, with no sign-up or installation required.</li>
-        </ul>
-      </div>
+    <section id="why">
+      <h2>Why people use it</h2>
+      <ul>
+        <li><strong>No account needed.</strong> No login, no signup and no email. Just paste a link.</li>
+        <li><strong>We don't save your videos.</strong> The video goes straight to your device.</li>
+        <li><strong>Free.</strong> No subscription and nothing to install.</li>
+        <li><strong>Simple.</strong> Paste the link, tap one button, and the video is ready.</li>
+      </ul>
     </section>
 
-    <!-- FAQ Section -->
-    <section class="faq-section" id="faq">
-      <div class="container">
-        <h2>Frequently Asked Questions</h2>
-
-        <div class="faq-item">
-          <h3>Is this pinterest video downloader free to use?</h3>
-          <p>Yes, this pinterest video downloader free tool has no cost, no subscription, and no hidden fees for downloading Pinterest videos.</p>
-        </div>
-
-        <div class="faq-item">
-          <h3>Do I need to create an account?</h3>
-          <p>No. This pinterest video downloader free service works instantly with just a pasted link — no sign-up or login needed.</p>
-        </div>
-
-        <div class="faq-item">
-          <h3>Does it work with pin.it short links?</h3>
-          <p>Yes, this pinterest video downloader free tool automatically follows pin.it short links to find the video.</p>
-        </div>
-
-        <div class="faq-item">
-          <h3>Will the downloaded video have a watermark?</h3>
-          <p>No, videos downloaded through this pinterest video downloader free tool are saved in their original quality with no watermark added.</p>
-        </div>
-
-        <div class="faq-item">
-          <h3>Does this work on mobile devices?</h3>
-          <p>Yes, this pinterest video downloader free website is fully responsive and works smoothly on phones, tablets, and desktops.</p>
-        </div>
-      </div>
+    <section id="format">
+      <h2>What you get</h2>
+      <p>You get the video as an MP4 file. MP4 plays on almost every phone, computer and TV. The quality is the same as the video on Pinterest. If the original is HD, your download is HD. If the original is low quality, the download will be too.</p>
+      <p>Want help with each step? See our <a href="/how-to-download-pinterest-videos">step-by-step guide with pictures</a>.</p>
     </section>
+
+    
 
   </main>
 
   <footer class="site-footer">
     <div class="container">
-      <p>&copy; <%= new Date().getFullYear() %> Pinterest Video Downloader Free. All rights reserved.</p>
+      <p>&copy; <%= new Date().getFullYear() %> Pinterest Video Downloader. All rights reserved.</p>
+      <p>
+        <a href="/how-to-download-pinterest-videos">Guide</a> 
+      
+      </p>
       <p class="footer-note">This is an independent tool and is not affiliated with Pinterest.</p>
     </div>
   </footer>
 
- <script>
-  function clearInput() {
-    document.getElementById("pinUrlInput").value = "";
-    document.getElementById("pinUrlInput").focus();
-  }
-
-  async function downloadVideo(encodedUrl) {
-    const status = document.getElementById("downloadStatus");
-    status.textContent = "Downloading...";
-
-    try {
-      const response = await fetch(`/download?url=${encodedUrl}`);
-      console.log("Response status:", response.status);
-      console.log("Response headers content-length:", response.headers.get("content-length"));
-
-      if (!response.ok) {
-        throw new Error(`Server returned status ${response.status}`);
-      }
-
-      const blob = await response.blob();
-      console.log("Blob size:", blob.size, "bytes");
-
-      if (blob.size === 0) {
-        throw new Error("Received empty file");
-      }
-
-      const blobUrl = window.URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = blobUrl;
-      a.download = "pinterest-video.mp4";
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-
-      window.URL.revokeObjectURL(blobUrl);
-      status.textContent = "Done!";
-    } catch (err) {
-      status.textContent = "Download failed. Try again.";
-      console.error("Download error:", err);
+  <script>
+    function clearInput() {
+      var input = document.getElementById("pinUrlInput");
+      input.value = "";
+      input.focus();
     }
-  }
-</script>
+
+    async function downloadVideo(encodedUrl) {
+      var status = document.getElementById("downloadStatus");
+      status.textContent = "Downloading...";
+
+      try {
+        var response = await fetch("/download?url=" + encodedUrl);
+        if (!response.ok) {
+          throw new Error("Server returned status " + response.status);
+        }
+
+        var blob = await response.blob();
+        if (blob.size === 0) {
+          throw new Error("Received empty file");
+        }
+
+        var blobUrl = window.URL.createObjectURL(blob);
+        var a = document.createElement("a");
+        a.href = blobUrl;
+        a.download = "pinterest-video.mp4";
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        window.URL.revokeObjectURL(blobUrl);
+
+        status.textContent = "Done!";
+      } catch (err) {
+        status.textContent = "Download failed. Please try again.";
+      }
+    }
+  </script>
 </body>
 </html>

@@ -131,6 +131,13 @@ app.get("/download", async (req, res) => {
     res.status(500).send("Download failed");
   }
 });
+
+
+
+app.get("/how-to-download-pinterest-videos", (req, res) => {
+  res.render("guide");
+});
+
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
