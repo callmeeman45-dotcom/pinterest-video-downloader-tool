@@ -138,6 +138,53 @@ app.get("/how-to-download-pinterest-videos", (req, res) => {
   res.render("guide");
 });
 
+
+
+const BASE_URL = "https://pinterest-video-downloader-tool.vercel.app/";
+
+// Pages you want Google to index
+const sitemapPages = [
+  { path: "/", changefreq: "weekly", priority: "1.0" },
+  { path: "/how-to-download-pinterest-videos", changefreq: "monthly", priority: "0.8" },
+  // Add more pages here later, e.g. { path: "/privacy-policy", changefreq: "yearly", priority: "0.3" }
+];
+
+app.get("/sitemap.xml", (req, res) => {
+  const today = new Date().toISOString().split("T")[0];
+
+  const urls = sitemapPages
+    .map(
+      (p) => `  <url>
+    <loc>${BASE_URL}${p.path}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>${p.changefreq}</changefreq>
+    <priority>${p.priority}</priority>
+  </url>`
+    )
+    .join("\n");
+
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls}
+</urlset>`;
+
+  res.header("Content-Type", "application/xml");
+  res.send(xml);
+});
+
+app.get("/robots.txt", (req, res) => {
+  res.type("text/plain");
+  res.send(`User-agent: *
+Allow: /
+Disallow: /download
+Disallow: /extract
+
+Sitemap: ${BASE_URL}/sitemap.xml`);
+});
+
+
+
+
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
